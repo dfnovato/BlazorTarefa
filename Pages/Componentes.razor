@@ -1,0 +1,119 @@
+﻿@page "/Componentes"
+
+<h1>@Mensagem</h1>
+
+<div class="row">
+    <div class="col-2 text rigth">
+        <b>On focus:</b>
+    </div>
+    <div class="col-6">
+        <input type="text" placeholder="On Focus" class="blazor-input" @onfocus="OnfocusCustomEvent" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-2 text rigth">
+        <b>On Paste:</b>
+    </div>
+    <div class="col-6">
+        <input type="text" placeholder="On Paste" class="blazor-input" @onpaste="OnPastEvent" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-2 text rigth">
+        <b>Evento de Mouse:</b>
+    </div>
+    <div class="col-6">
+        <button @onclick="OnClickEvent"
+                @ondblclick="OnDClickEvent"
+                @onmousedown="OnDonwClickEvent"
+                @onmouseup="OnUpClickEvent"
+                @onmouseover="OnOverClickEvent"
+                @onmouseout="OnOutClickEvent"
+                @onmousemove="OnMoveClickEvent"
+                @onmousewheel="OnWhellClickEvent"
+                class="btn btn-primary btn-sm">
+            Testes
+        </button>
+        <br />
+        <br />
+        <button @onclick="OnMouseEvent"
+                @onmouseout="OnMouseEvent"
+                class="btn btn-danger btn-sm">
+            Switch
+        </button>
+        <br />
+        <br />
+        <button @onclick="@(z=>ChangeMensagemControl(z,100))"
+                class="btn btn-danger btn-sm">
+           Expressões Lambda 
+        </button>
+    </div>
+</div>
+
+
+@code {
+    public string Mensagem { get; set; }
+
+    protected void OnfocusCustomEvent()
+    {
+        this.Mensagem = "Mensagem aparecendo On focus";
+    }
+
+    protected void OnPastEvent()
+    {
+        Mensagem = "Mensagem aparecendo On Paste";
+    }
+
+    protected void OnClickEvent()
+    {
+        Mensagem = "On Click Event";
+    }
+    protected void OnDClickEvent()
+    {
+        Mensagem = "On doble Click Event";
+    }
+    protected void OnDonwClickEvent()
+    {
+        Mensagem = "On donw Click Event";
+    }
+    protected void OnUpClickEvent()
+    {
+        Mensagem = "On up Click Event";
+    }
+    protected void OnOverClickEvent()
+    {
+        Mensagem = "On over Click Event";
+    }
+    protected void OnOutClickEvent()
+    {
+        Mensagem = "On out Click Event";
+    }
+    protected void OnMoveClickEvent()
+    {
+        Mensagem = "On Move Click Event";
+    }
+    protected void OnWhellClickEvent()
+    {
+        Mensagem = "On rodinha Event";
+    }
+
+    protected void OnMouseEvent(MouseEventArgs e)
+    {
+        switch (e.Type)
+        {
+            case "click": this.Mensagem = "switch click";
+                break;
+            case "mouseout": this.Mensagem = "SWITCH OUT";
+                break;
+        }
+    }
+
+    protected void ChangeMensagemControl(MouseEventArgs z, int elementId)
+    {
+       //sua escolha de forma
+       //this.Mensagem = "Element number" + elementId.ToString();
+        this.Mensagem = $"Element Number {elementId}";
+    }
+}

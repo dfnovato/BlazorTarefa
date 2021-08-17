@@ -1,0 +1,29 @@
+﻿@page "/Databinding"
+
+<h1> @Mensagem </h1>
+<h1> @Mensagem2 </h1>
+<h2>@saudacao()</h2>
+<button @onclick="Atualizamensagem">butão</button>
+<input @bind="@Mensagem2" />
+
+@code
+{
+    private string Mensagem { get; set; } = "Ola marcos";
+    private string Mensagem2 { get; set; } = "Ola marcos 2";
+    private string saudacao()
+    {
+        return "bem-vindo, ao blazor";
+    }
+
+    private void Atualizamensagem()
+    {
+        Mensagem = "Ola blazor tudo bem?";
+    }
+
+
+
+
+    /* ESPAÇO DE REUSO
+
+    */
+}

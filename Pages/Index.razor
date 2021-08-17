@@ -1,0 +1,22 @@
+﻿@page "/"
+@* para poder acessar o tarefas json*@
+@inject HttpClient http
+
+@*Definido parametro tarefas que retorna a lista tarefas*@
+<Tarefas tarefas=" GetTarefas()" Titulo="Lista de Tarefas" />
+
+@code
+{
+    List<Tarefa> tarefas = new List<Tarefa>();
+    // metodo usado para todos os componentes
+    protected override async Task OnInitializedAsync()
+    {
+        tarefas = await http.GetFromJsonAsync<List<Tarefa>>("dados/tarefas.json");
+    }
+
+    // metodo para retornar a lista de tarefas
+    private List<Tarefa> GetTarefas()
+    {
+        return tarefas;
+    }
+ }

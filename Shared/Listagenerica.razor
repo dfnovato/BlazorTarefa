@@ -1,0 +1,40 @@
+﻿@*utilizada para especificar um tipo generico de parametro  *@
+@typeparam Titem
+
+@if (ListaItem == null)
+{
+    if (Carregando == null)
+    {
+        <text>Carregando</text>
+    }
+    else
+    {
+        @Carregando
+    }
+
+}
+else if (!ListaItem.Any())
+{
+    if (SemRegistro == null)
+    {
+        <text>Não Existem Tarefas</text>
+    }
+    else
+    {
+        @SemRegistro
+    }
+}
+else
+{
+    foreach(var elemento in ListaItem)
+                {
+                   <tr>@Lista(elemento)</tr>
+                }
+}
+
+@code {
+    [Parameter] public RenderFragment Carregando { get; set; }
+    [Parameter] public RenderFragment SemRegistro { get; set; }
+    [Parameter] public List<Titem> ListaItem { get; set; }
+    [Parameter] public RenderFragment<Titem> Lista { get; set; }
+}

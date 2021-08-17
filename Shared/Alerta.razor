@@ -1,0 +1,29 @@
+﻿@*<div class="alert alert-danger mt-4" role="alert">
+        <span class="oi oi-x mr-2" aria-hidden="true"></span>
+        <strong>@Mensagem</strong>
+    </div> *@
+
+@if (conteudo1 == null)
+{
+    <span style="color:black"> Texto Padrão </span>
+}
+else
+{
+    @conteudo1
+}
+@if (conteudo2 == null)
+{
+    <span style="color:black"> Texto Padrão </span>
+}
+else
+{
+    @conteudo2
+}
+
+@code {
+
+    //[Parameter] public string Mensagem { get; set; }
+    // parametro para usar o RenderFragment
+    [Parameter] public RenderFragment conteudo1 { get; set; }
+    [Parameter] public RenderFragment conteudo2 { get; set; }
+}

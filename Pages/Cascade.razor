@@ -1,0 +1,16 @@
+﻿@page  "/Cascade"
+
+
+<body style="background-color:@Cordefundo" Name="Tamanhodafonte"></body>
+<p style="font-size:@Tamanhodafonte" Name="Cordefundo"></p>
+
+<CascadingValue Value="@Resposta">
+    <Pergunta></Pergunta>
+</CascadingValue>
+
+@code {
+    string Resposta = "Copiar, Colar, Refazer, Documentar";
+
+    [CascadingParameter(Name ="Cordefundo")] string Cordefundo { get; set; }
+    [CascadingParameter(Name = "Tamanhodafonte")] string Tamanhodafonte { get; set; }
+}

@@ -1,0 +1,18 @@
+﻿<h3>Como Programar Bem?</h3>
+<hr />
+<h1>@Valor</h1>
+<br />
+
+<div class="content px-4">
+    <CascadingValue Value="@Cor">
+        <CascadingValue Value="@Tamanho">
+
+        </CascadingValue>
+    </CascadingValue>
+</div>
+
+@code {
+    [CascadingParameter] string Valor { get; set; }
+    private string Cor = "cyan";
+    private string Tamanho = "20px";
+}
